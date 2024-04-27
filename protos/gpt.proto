@@ -1,0 +1,23 @@
+syntax="proto3";
+package protos;
+option go_package ="./protos";
+
+service GPTHandler{
+    rpc Getanswer(Request)returns(Response);
+    rpc GetSearch(SearchRequest)returns(SearchResponse);
+}
+
+message Request{
+    string query=1;
+}
+message Response{
+    string ans=1;
+}
+message SearchRequest{
+    bytes document=1;
+    string query=2;
+}
+message SearchResponse{
+    string ans=1;
+    double score=2;
+}
